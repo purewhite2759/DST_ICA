@@ -28,13 +28,17 @@ public class QueryServlet extends HttpServlet{
             out.write("<html>");
             out.write("<body>");
             out.write("Drugs without biomarker: <br>");
+            out.write("<table border='1'>");
+            out.write("<tr><th>ID</th><th>Name</th><th>Object Class</th><th>Drug URL</th></tr>");
             while (rs.next()) {
-                out.write(rs.getString("id") + "&nbsp;&nbsp;&nbsp;&nbsp;");
-                out.write(rs.getString("name") + "&nbsp;&nbsp;&nbsp;&nbsp;");
-                out.write(rs.getString("obj_cls") + "&nbsp;&nbsp;&nbsp;&nbsp;");
-                out.write(rs.getString("drug_url") + "&nbsp;&nbsp;&nbsp;&nbsp;");
-                out.write("<br>");
+                out.write("<tr>");
+                out.write("<td>" + rs.getString("id") + "</td>");
+                out.write("<td>" + rs.getString("name") + "</td>");
+                out.write("<td>" + rs.getString("obj_cls") + "</td>");
+                out.write("<td>" + rs.getString("drug_url") + "</td>");
+                out.write("</tr>");
             }
+            out.write("</table>");
             out.write("</body>");
             out.write("</html>");
             stmt.close();

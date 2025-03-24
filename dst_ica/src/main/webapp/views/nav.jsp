@@ -26,6 +26,18 @@
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
+                <a class='nav-link ${param.active == "query" ? "active" : ""}' href="<%=request.getContextPath()%>/query">
+                    <span data-feather="file-text"></span>
+                    Query
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class='nav-link ${param.active == "counter" ? "active" : ""}' href="<%=request.getContextPath()%>/counter">
+                    <span data-feather="file-text"></span>
+                    Counter
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class='nav-link ${param.active == "drugs" ? "active" : ""}' href="<%=request.getContextPath()%>/drugs">
                     <span data-feather="file-text"></span>
                     Drugs

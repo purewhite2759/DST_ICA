@@ -56,13 +56,21 @@
                 <h2>Drugs</h2>
             </div>
             <div class="table-responsive">
-                <table class="table table-striped table-sm">
+                <select id="columnSelectDrug" class="custom-select" onchange="filterTable('drugTable', 'searchInputDrug', 'columnSelectDrug')">
+                    <option value="all">All columns</option>
+                    <option value="0">#</option>
+                    <option value="1">Name</option>
+                    <option value="2">Drug URL</option>
+                    <option value="3">Biomarker</option>
+                </select>
+                <input type="text" id="searchInputDrug" class="form-control mb-3" placeholder="Search from table..." onkeyup="filterTable('drugTable', 'searchInputDrug', 'columnSelectDrug')">
+                <table class="table table-striped table-sm" id="drugTable">
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Drug Url</th>
-                        <th>Biomarker</th>
+                        <th onclick="sortTable('drugTable', 0)">#</th>
+                        <th onclick="sortTable('drugTable', 1)">Name</th>
+                        <th onclick="sortTable('drugTable', 2)">Drug Url</th>
+                        <th onclick="sortTable('drugTable', 3)">Biomarker</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -77,6 +85,10 @@
 
                     </tbody>
                 </table>
+                <script>
+                    var workerPath = '<%=request.getContextPath()%>/static/js/sortWorker.js';
+                </script>
+                <script src="<%=request.getContextPath()%>/static/js/tableUtils.js"></script>
             </div>
         </main>
     </div>

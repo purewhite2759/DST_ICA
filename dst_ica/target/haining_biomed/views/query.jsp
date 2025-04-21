@@ -56,13 +56,21 @@
                 <h2>Query</h2>
             </div>
             <div class="table-responsive">
-                <table class="table table-striped table-sm">
+                <select id="columnSelectQuery" class="custom-select" onchange="filterTable('queryTable', 'searchInputQuery', 'columnSelectQuery')">
+                    <option value="all">All columns</option>
+                    <option value="0">ID</option>
+                    <option value="1">Name</option>
+                    <option value="2">Object Class</option>
+                    <option value="3">Drug URL</option>
+                </select>
+                <input type="text" id="searchInputQuery" class="form-control mb-3" placeholder="Search from table..." onkeyup="filterTable('queryTable', 'searchInputQuery', 'columnSelectQuery')">
+                <table class="table table-striped table-sm" id="queryTable">
                     <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Object Class</th>
-                        <th>Drug URL</th>
+                        <th onclick="sortTable('queryTable', 0)">ID</th>
+                        <th onclick="sortTable('queryTable', 1)">Name</th>
+                        <th onclick="sortTable('queryTable', 2)">Object Class</th>
+                        <th onclick="sortTable('queryTable', 3)">Drug URL</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -76,6 +84,10 @@
                     </c:forEach>
                     </tbody>
                 </table>
+                <script>
+                    var workerPath = '<%=request.getContextPath()%>/static/js/sortWorker.js';
+                </script>
+                <script src="<%=request.getContextPath()%>/static/js/tableUtils.js"></script>
             </div>
         </main>
     </div>

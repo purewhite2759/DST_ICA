@@ -56,15 +56,25 @@
                 <h2>Dosing Guidelines</h2>
             </div>
             <div class="table-responsive">
-                <table class="table table-striped table-sm">
+                <select id="columnSelectDosing" class="custom-select" onchange="filterTable('dosingTable', 'searchInputDosing', 'columnSelectDosing')">
+                    <option value="all">All columns</option>
+                    <option value="0">#</option>
+                    <option value="1">Name</option>
+                    <option value="2">Recommendation</option>
+                    <option value="3">Drug Id</option>
+                    <option value="4">Source</option>
+                    <option value="5">Summary Markdown</option>
+                </select>
+                <input type="text" id="searchInputDosing" class="form-control mb-3" placeholder="Search from table..." onkeyup="filterTable('dosingTable', 'searchInputDosing', 'columnSelectDosing')">
+                <table class="table table-striped table-sm" id="dosingTable">
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Recommendation</th>
-                        <th>Drug Id</th>
-                        <th>Source</th>
-                        <th>Summary Markdown</th>
+                        <th onclick="sortTable('dosingTable', 0)">#</th>
+                        <th onclick="sortTable('dosingTable', 1)">Name</th>
+                        <th onclick="sortTable('dosingTable', 2)">Recommendation</th>
+                        <th onclick="sortTable('dosingTable', 3)">Drug Id</th>
+                        <th onclick="sortTable('dosingTable', 4)">Source</th>
+                        <th onclick="sortTable('dosingTable', 5)">Summary Markdown</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -81,6 +91,10 @@
 
                     </tbody>
                 </table>
+                <script>
+                    var workerPath = '<%=request.getContextPath()%>/static/js/sortWorker.js';
+                </script>
+                <script src="<%=request.getContextPath()%>/static/js/tableUtils.js"></script>
             </div>
         </main>
     </div>
